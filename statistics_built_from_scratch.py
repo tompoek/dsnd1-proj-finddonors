@@ -2,20 +2,6 @@ from scipy.stats import chi2_contingency
 import numpy as np
 import pandas as pd
 
-def cat2num(table):
-	dd = {}
-	for c in table.columns:
-		dd.update({c: [0]*table.shape[0]})
-	num_table = pd.DataFrame(dd)
-	for col in table.columns:
-		feat_set = table[col].unique()
-		for i in range(table.shape[0]):
-			for j in range(feat_set.shape[0]):
-				if table[col][i] == feat_set[j]:
-					num_table[col][i] = j
-					break
-	return num_table
-
 def c2(feat1, feat2, tab):
 	feat1_set = tab[feat1].unique()
 	feat2_set = tab[feat2].unique()
